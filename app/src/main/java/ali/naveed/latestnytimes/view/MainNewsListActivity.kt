@@ -92,7 +92,7 @@ class MainNewsListActivity : MvvmBaseActivity<MainViewModel>() {
     }
 
 
-    private fun getPopularNews(span: Int=3) {
+    private fun getPopularNews(span: Int = 1) {
         if (isNetworkConnected(this)) {
             showProgress()
             viewModel?.popularNews(span)?.observe(this, Observer {
