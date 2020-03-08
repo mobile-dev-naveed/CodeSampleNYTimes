@@ -25,7 +25,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainNewsListActivity : MvvmBaseActivity<MainViewModel>() {
 
     companion object{
-        const val TAG = "c"
+        const val TAG = "MainList"
     }
     enum class SPANS(span: Int) {TODAY(1),WEEKLY(7),MONTHLY(30);
         val spanValue = span
