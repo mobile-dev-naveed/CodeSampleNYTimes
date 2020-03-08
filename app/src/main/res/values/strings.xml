@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Latest NY times</string>
+
+    <string name="no_internt">Newrok connection failuire!</string>
+    <string name="search_title">Search</string>
+    <string name="today">Today</string>
+    <string name="week">Week</string>
+    <string name="month">Month</string>
+
+</resources>

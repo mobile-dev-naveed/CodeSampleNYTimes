@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.DetailFragment">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/mediaImv"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@mipmap/ic_launcher"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#80777777"
+        android:textColor="@android:color/white"
+        tools:text="@tools:sample/lorem"
+        android:padding="10dp"
+        android:id="@+id/titleTv"
+        app:layout_constraintBottom_toBottomOf="@+id/mediaImv" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/byTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mediaImv"
+        tools:text="@tools:sample/lorem"
+        android:textColor="@android:color/black"
+        android:padding="10dp"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/descTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/byTv"
+        tools:text="@tools:sample/lorem/random"
+        android:textColor="@android:color/black"
+        android:padding="10dp"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
