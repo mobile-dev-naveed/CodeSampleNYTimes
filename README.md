@@ -1,5 +1,5 @@
 # CodeSampeNYTimes
-MVVM architecture based sample
+# MVVM architecture based sample
 https://developer.android.com/jetpack/docs/guide#overview
 
 Generate build
