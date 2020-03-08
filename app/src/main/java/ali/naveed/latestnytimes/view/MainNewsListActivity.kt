@@ -1,17 +1,14 @@
 package ali.naveed.latestnytimes.view
 
 import ali.naveed.latestnytimes.R
-import ali.naveed.latestnytimes.data.Status
+import ali.naveed.latestnytimes.networking.Status
 import ali.naveed.latestnytimes.model.ItemResult
 import ali.naveed.latestnytimes.quickhelper.AlertUtils
 import ali.naveed.latestnytimes.quickhelper.BundleExtraKeys
 import ali.naveed.latestnytimes.quickhelper.mvvm.MvvmBaseActivity
 import ali.naveed.latestnytimes.utils.NetworkConnection.isNetworkConnected
 import ali.naveed.latestnytimes.viewmodel.MainViewModel
-import android.app.SearchManager
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.SearchView

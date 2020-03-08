@@ -1,7 +1,6 @@
 package ali.naveed.latestnytimes.viewmodel
 
-import ali.naveed.latestnytimes.data.Status
-import ali.naveed.latestnytimes.data.repository.PopularNewsRepository
+import ali.naveed.latestnytimes.networking.repository.PopularNewsRepository
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import kotlinx.coroutines.Dispatchers

@@ -1,10 +1,9 @@
-package ali.naveed.latestnytimes.data.repository
+package ali.naveed.latestnytimes.networking.repository
 
-import ali.naveed.latestnytimes.data.Resource
-import ali.naveed.latestnytimes.data.ResponseHandler
-import ali.naveed.latestnytimes.data.Webservice
-import ali.naveed.latestnytimes.data.webservice
-import ali.naveed.latestnytimes.model.ItemResult
+import ali.naveed.latestnytimes.networking.Resource
+import ali.naveed.latestnytimes.networking.ResponseHandler
+import ali.naveed.latestnytimes.networking.Webservice
+import ali.naveed.latestnytimes.networking.webservice
 import ali.naveed.latestnytimes.model.ResultResp
 
 /**

@@ -1,4 +1,4 @@
-package ali.naveed.latestnytimes.data
+package ali.naveed.latestnytimes.networking
 
 import ali.naveed.latestnytimes.model.ResultResp
 import ali.naveed.latestnytimes.utils.Constants.key

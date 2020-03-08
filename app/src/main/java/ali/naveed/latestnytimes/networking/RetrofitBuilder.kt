@@ -1,4 +1,4 @@
-package ali.naveed.latestnytimes.data
+package ali.naveed.latestnytimes.networking
 
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit

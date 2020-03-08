@@ -1,4 +1,4 @@
-package ali.naveed.latestnytimes.data
+package ali.naveed.latestnytimes.networking
 
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
