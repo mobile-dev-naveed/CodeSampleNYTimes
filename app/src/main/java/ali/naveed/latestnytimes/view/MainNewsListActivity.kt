@@ -7,10 +7,13 @@ import ali.naveed.latestnytimes.quickhelper.BundleExtraKeys
 import ali.naveed.latestnytimes.quickhelper.mvvm.MvvmBaseActivity
 import ali.naveed.latestnytimes.utils.NetworkConnection.isNetworkConnected
 import ali.naveed.latestnytimes.viewmodel.MainViewModel
+import android.app.SearchManager
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,7 +26,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainNewsListActivity : MvvmBaseActivity<MainViewModel>() {
 
     private lateinit var adapter: NyTimesAdapter
-    private var data: MutableList<ItemResult> = ArrayList()
+    var searchView:SearchView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -34,6 +37,20 @@ class MainNewsListActivity : MvvmBaseActivity<MainViewModel>() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.home_menu,menu)
+        searchView = menu?.findItem(R.id.search)?.actionView as SearchView
+        searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.onQueryChanged(newText)
+                return false
+            }
+
+        })
+
+
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -63,10 +80,10 @@ class MainNewsListActivity : MvvmBaseActivity<MainViewModel>() {
 
 
     private fun initAdapter() {
-        adapter = NyTimesAdapter(data, object : ItemClickListener {
-            override fun onClicked(position: Int) {
+        adapter = NyTimesAdapter(object : ItemClickListener {
+            override fun onClicked(position: Int,itemResult: ItemResult) {
                 launchActivity(NewsDetailActivity::class.java, Bundle().apply {
-                    putParcelable(BundleExtraKeys.DATA.name, data[position])
+                    putParcelable(BundleExtraKeys.DATA.name,itemResult)
                 })
             }
         })
@@ -83,10 +100,9 @@ class MainNewsListActivity : MvvmBaseActivity<MainViewModel>() {
             viewModel?.popularNews(span)?.observe(this, Observer {
                 it?.let {
                     dismissProgress()
-                    data.clear()
-                    it.itemResults?.let { it1 -> data.addAll(it1) }
-                    Log.d("Main", "size = " + data.size)
-                    adapter.notifyDataSetChanged()
+                    it.itemResults?.let { items -> adapter.setData(items)
+                        searchView?.isIconified = true
+                    }
                 }
             })
         }else AlertUtils.showToast(this,R.string.no_internt)
