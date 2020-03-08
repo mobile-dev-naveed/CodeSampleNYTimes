@@ -1,6 +1,7 @@
 package ali.naveed.latestnytimes.view
 
 import ali.naveed.latestnytimes.R
+import ali.naveed.latestnytimes.data.Status
 import ali.naveed.latestnytimes.model.ItemResult
 import ali.naveed.latestnytimes.quickhelper.AlertUtils
 import ali.naveed.latestnytimes.quickhelper.BundleExtraKeys
@@ -94,16 +95,25 @@ class MainNewsListActivity : MvvmBaseActivity<MainViewModel>() {
     }
 
 
-    private fun getPopularNews(span: Int=1) {
+    private fun getPopularNews(span: Int=3) {
         if (isNetworkConnected(this)) {
             showProgress()
             viewModel?.popularNews(span)?.observe(this, Observer {
-                it?.let {
-                    dismissProgress()
-                    it.itemResults?.let { items -> adapter.setData(items)
-                        searchView?.isIconified = true
+                dismissProgress()
+                when(it.status){
+                    Status.SUCCESS->{
+                        it.data?.let {result->
+                            result.itemResults?.let { items -> adapter.setData(items)
+                                searchView?.isIconified = true
+                            }
+                        }
+                    }
+                    Status.ERROR->{
+                        it.message?.let { message-> AlertUtils.showToast(this@MainNewsListActivity,message)}
                     }
                 }
+
+
             })
         }else AlertUtils.showToast(this,R.string.no_internt)
     }

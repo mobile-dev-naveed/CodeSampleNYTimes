@@ -23,7 +23,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
-
+            tools:src="@mipmap/ic_launcher"
             />
 
         <LinearLayout
@@ -59,7 +59,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:textColor="@android:color/black"
                 tools:text="@tools:sample/lorem"
                 android:drawableStart="@drawable/ic_calendar"
                 android:drawableLeft="@drawable/ic_calendar"
