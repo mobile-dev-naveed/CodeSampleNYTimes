@@ -1,6 +1,7 @@
-# CodeSampeNYTimes
+# Code Sample NYTimes
 # MVVM architecture based sample
 https://developer.android.com/jetpack/docs/guide#overview
 
-Generate build
+- Generate build
+
 ./gradlew assembleDebug
