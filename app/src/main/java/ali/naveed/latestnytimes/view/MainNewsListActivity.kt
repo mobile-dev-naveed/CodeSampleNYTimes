@@ -9,6 +9,7 @@ import ali.naveed.latestnytimes.quickhelper.mvvm.MvvmBaseActivity
 import ali.naveed.latestnytimes.utils.NetworkConnection.isNetworkConnected
 import ali.naveed.latestnytimes.viewmodel.MainViewModel
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.SearchView
@@ -23,6 +24,12 @@ import kotlinx.android.synthetic.main.activity_main.*
  */
 class MainNewsListActivity : MvvmBaseActivity<MainViewModel>() {
 
+    companion object{
+        const val TAG = "c"
+    }
+    enum class SPANS(span: Int) {TODAY(1),WEEKLY(7),MONTHLY(30);
+        val spanValue = span
+    }
     private lateinit var adapter: NyTimesAdapter
     var searchView:SearchView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,12 +61,12 @@ class MainNewsListActivity : MvvmBaseActivity<MainViewModel>() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val span = when(item.itemId){
-            R.id.today-> 1
-            R.id.week->7
-            R.id.month->30
-            else -> 1
+            R.id.today-> SPANS.TODAY
+            R.id.week->SPANS.WEEKLY
+            R.id.month->SPANS.MONTHLY
+            else -> SPANS.TODAY
         }
-        getPopularNews(span)
+        getPopularNews(span.spanValue)
         return super.onOptionsItemSelected(item)
 
     }
@@ -92,7 +99,7 @@ class MainNewsListActivity : MvvmBaseActivity<MainViewModel>() {
     }
 
 
-    private fun getPopularNews(span: Int=3) {
+    private fun getPopularNews(span: Int = 1) {
         if (isNetworkConnected(this)) {
             showProgress()
             viewModel?.popularNews(span)?.observe(this, Observer {
